@@ -1,8 +1,10 @@
+import Hero from "@/components/sections/Hero";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
+      <Hero />
       <section id="hero" className="h-screen bg-amber-100 flex items-center justify-center">
         <h1 className="text-4xl font-bold">Hero Section</h1>
       </section>
