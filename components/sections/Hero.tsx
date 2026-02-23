@@ -2,6 +2,7 @@
 import { Container } from '../ui/Container'
 import { ChevronDown } from 'lucide-react'
 import {motion} from 'framer-motion'
+import Image from 'next/image'
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -26,9 +27,20 @@ const Hero = () => {
   return (
    <section
     id="hero"
-    className="relative min-h-screen flex items-center justify-center bg-gray-900"
+    className="relative min-h-screen flex items-center justify-center "
    >
-    <Container className='text-center text-white'>
+    {/* Arka Plan Görseli */}
+    <Image
+       src="/hero-bg.jpg"
+       alt='Lumina Gastronomy restaurant ambiance'
+       fill
+       className='object-cover'
+       priority
+    >
+    </Image>
+     {/* Overlay */}
+        <div className='absolute inset-0 bg-black/60'></div>
+    <Container className='text-center text-white relative z-10'>
         <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -62,16 +74,17 @@ const Hero = () => {
             </motion.div>
 
         </motion.div>
-        <motion.div
+        
+    </Container>
+    <motion.div
           initial={{ opacity: 0}}
           animate={{ opacity:1, y: [0,10,0]}}
           transition={{delay:1, duration:1.5, repeat: Infinity}}
-          className='absolute bottom-8 left-1/2 -translate-x-1/2'
+          className='absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer'
         >
             <ChevronDown size={50} className='text-white ' />
            
         </motion.div>
-    </Container>
    </section>
   )
 }
